@@ -1,10 +1,16 @@
 # Short introduction to docker
 
-Intro
+## Basic concepts
 
-1. ¿Qué es docker? -> sistema para gestión de contenedores
-2. ¿Qué son los contenedores? -> son como mini-máquinas virtuales muy eficientes
-3. ¿Por qué son eficientes? -> Mecanismos de aislamiento del núcleo (espacio de usuarios, de procesos, de red, etc. Diferentes)
+* ¿What is *docker*? A *container* management system
+* ¿What are *containers*? We can think in a container as a small and very efficient virtual machine
+* ¿Why are they *efficient*? Because they share the kernel of the host machine and use some mechanisms for isolating resources (cgroups and namespaces), like processes, memory, users, network interfaces, etc.
+
+|![Container vs. virtual machine](https://i1.wp.com/www.docker.com/blog/wp-content/uploads/Blog.-Are-containers-..VM-Image-1-1024x435.png?ssl=1)|
+|:--:|
+|Containers (left) vd. virtual machines (right).<br/>*Source: Jenny Fong (https://www.docker.com/blog/containers-replacing-virtual-machines/)*|
+
+
 4. Ventajas: entornos montados rápidos, ideal para reproducir entornos de ejecución sin problemas de configuración, muchos contenedores listos para usar, seguridad, copias sencillas, múltiples versiones, escalado de aplicaciones masivo
 5. Inconvenientes: carga en tiempo de ejecución
 6. Conceptos: contenedor, imagen, volumen
