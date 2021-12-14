@@ -29,6 +29,8 @@
 
 ## Basic commands
 
+You can use your own docker installation to follow the tutorial or go to [play with docker](https://labs.play-with-docker.com) if you don't want to install anything.
+
 * Create and run a new container (alpine is the name of the *image*, a 5MB Linux distribution):
 ```
 docker run -it alpine
@@ -56,6 +58,7 @@ All containers have a unique ID in addition to the name. We can use this ID also
 ```
 docker container logs -f myweb
 ```
+The `-f` option makes the docker command to wait for new content. Without this option the current log is shown and the command ends.
 * Let's remove all the containers using:
 ```
 docker container rm myweb
