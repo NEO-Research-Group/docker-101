@@ -27,6 +27,8 @@
 
 * *Image*: An image is a *container template*. There can be many running containers based on the same image. The relationship between container and image is the same as process and program (or object and class).
 
+* *Volume*: Storage unit, path in the host file system or temporal filesystem that we can mount at any point in a container.
+
 ## Basic commands
 
 You can use your own docker installation to follow the tutorial or go to [play with docker](https://labs.play-with-docker.com) if you don't want to install anything.
@@ -74,7 +76,31 @@ for i in `seq 1 3`; do docker run -d httpd:alpine; done
 * When we stop these containers they still exist, becasue they keep come *state* (a whole filesystem), and they requires disk space. If we are not interested in the state (changes in the internal filesystem) we can get rid of the containers when they stop. We can do this with the `--rm` option:
 ```
 docker run --rm -it alpine
+```
+```
 docker container ls
+```
+
+### Port mapping
+
+Containers have a network namespace completely separated from the host system. We can *bind* ports in the host system with ports in the container. This way we can map services in the container to different ports of our host machine.
+
+* We can use option `-p` to do such port bindings:
+
+```
+docker run --rm -d -p 80:80 httpd:alpine
+```
+
+### Volume management
+
+The file system of the containers and the host system are separated. We can mount virtual storage units, called `volumes` to any path in the container. Volumes' lifecycle is different from containers' lifecycle: they survive container removal.
+
+* Let's create a volume:
+```
+docker create volume myapp
+```
+* Let's mount that volume in a docker container:
+```
 ```
 
 ### Image management
@@ -88,22 +114,15 @@ docker image ls
 docker image rm alpine
 ```
 
-### 
+### Volume management
 
-Comandos básicos para gestión de contenedores: docker run, docker container (ls, rm)
-- Run - - rm (ejemplo hola mundo ver qué pasa si no se pone rm)
-- Docker container ls
-- Run - i t
-
-* Conceptos: contenedor, imagen, volumen
 
 Añadiendo volúmenes: 
 - Volúmenes: -v
 - Con nombre, enlazando a sistemas de ficheros, o ficheros concretos
 - Docker volume (ls, rm, create)
 
-Interacción por Web
-- Puertos: -p
+
 
 Creando receta para contenedor
 - Dockerfile (ejemplo sencillo que yo tenga con App)
