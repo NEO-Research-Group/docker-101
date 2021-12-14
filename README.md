@@ -99,9 +99,15 @@ The file system of the containers and the host system are separated. We can moun
 ```
 docker create volume myapp
 ```
-* Let's mount that volume in a docker container:
+* Let's mount that volume in a docker container with option `-v`:
 ```
+docker run --rm -it -v myapp:/app alpine
 ```
+The previous command mounts the volume called `myapp` in `/app`. Let's see what is there:
+```
+/ # ls /app
+```
+We can see that it is empty (what did you expect?).
 
 ### Image management
 
