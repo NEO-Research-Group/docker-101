@@ -52,6 +52,10 @@ docker container stop myweb
 docker container start myweb
 ```
 All containers have a unique ID in addition to the name. We can use this ID also to manage the container (in `rm`, `stop`, `start`, etc.)
+* Let's see the log (standard output) of the container:
+```
+docker container logs -f myweb
+```
 * Let's remove all the containers using:
 ```
 docker container rm myweb
