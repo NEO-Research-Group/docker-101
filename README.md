@@ -105,7 +105,7 @@ docker run --rm -it -v myapp:/app alpine
 ```
 The previous command mounts the volume called `myapp` in `/app`. Let's see what is there:
 ```
-/ # ls /app
+ls /app
 ```
 We can see that it is empty (what did you expect?).
 
