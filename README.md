@@ -25,7 +25,37 @@
   * Learning curve: not appropriate for small apps if your development environment is alread configured
   * All UI must be through command line or Web (no desktop UI).
 
+* *Image*: An image is a *container template*. There can be many running containers based on the same image. The relationship between container and image is the same as process and program (or object and class).
+
 ## Basic commands
+
+* Create and run a new container (alpine is the name of the *image*, a 5MB Linux distribution):
+```
+docker run -it alpine
+```
+* Check that the container still exists after exiting it:
+```
+docker container ls -a
+```
+Without option `-a`, the `ls` command only returns running containers. Example:
+```
+docker run -d --name myweb httpd:alpine
+docker container ls
+```
+We can assign names to containers using `--name` when creating it (otherwise, a random name is created by the docker engine). We can run it as a background process using `-d` (otherwise, the shell wil wait until the container stops).
+* Stop a container using:
+```
+docker container stop myweb
+```
+* Start a container using:
+```
+docker container start myweb
+```
+All containers have a unique ID in addition to the name. We can use this ID also to manage the container (in `rm`, `stop`, `start`, etc.)
+* Let's remove all the containers using:
+```
+docker container rm myweb
+```
 
 Comandos básicos para gestión de contenedores: docker run, docker container (ls, rm)
 - Run - - rm (ejemplo hola mundo ver qué pasa si no se pone rm)
