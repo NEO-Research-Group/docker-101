@@ -63,6 +63,10 @@ The `-f` option makes the docker command to wait for new content. Without this o
 ```
 docker container rm myweb
 ```
+* We can run as many containers based on the same image as we want:
+```
+for i in `seq 1 3`; do docker run -d httpd:alpine; done
+```
 
 Comandos básicos para gestión de contenedores: docker run, docker container (ls, rm)
 - Run - - rm (ejemplo hola mundo ver qué pasa si no se pone rm)
