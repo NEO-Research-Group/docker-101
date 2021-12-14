@@ -75,6 +75,7 @@ for i in `seq 1 3`; do docker run -d httpd:alpine; done
 ```
 docker run --rm -it alpine
 docker container ls
+```
 
 ### Image management
 
