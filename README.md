@@ -31,10 +31,14 @@
 
 You can use your own docker installation to follow the tutorial or go to [play with docker](https://labs.play-with-docker.com) if you don't want to install anything.
 
+### Container management
+
 * Create and run a new container (alpine is the name of the *image*, a 5MB Linux distribution):
 ```
 docker run -it alpine
 ```
+The `-i` option connects the standard input of the shell with teh standard input of the container. The `-t` option creates a (virtual) terminal to the standard input and output of the docker process to allow easy interaction with the user.
+
 * Check that the container still exists after exiting it:
 ```
 docker container ls -a
@@ -67,6 +71,23 @@ docker container rm myweb
 ```
 for i in `seq 1 3`; do docker run -d httpd:alpine; done
 ```
+* When we stop these containers they still exist, becasue they keep come *state* (a whole filesystem), and they requires disk space. If we are not interested in the state (changes in the internal filesystem) we can get rid of the containers when they stop. We can do this with the `--rm` option:
+```
+docker run --rm -it alpine
+docker container ls
+
+### Image management
+
+* We can see the images downloaded in our docker engine with:
+```
+docker image ls
+```
+* We can remove an image with:
+```
+docker image rm alpine
+```
+
+### 
 
 Comandos básicos para gestión de contenedores: docker run, docker container (ls, rm)
 - Run - - rm (ejemplo hola mundo ver qué pasa si no se pone rm)
