@@ -11,14 +11,28 @@
 |Containers (left) vd. virtual machines (right).<br/>*Source: Jenny Fong (https://www.docker.com/blog/containers-replacing-virtual-machines/)*|
 
 
-4. Ventajas: entornos montados rápidos, ideal para reproducir entornos de ejecución sin problemas de configuración, muchos contenedores listos para usar, seguridad, copias sencillas, múltiples versiones, escalado de aplicaciones masivo
-5. Inconvenientes: carga en tiempo de ejecución
-6. Conceptos: contenedor, imagen, volumen
+* Advantages:
+  * The running environment is prepared once and run many times
+  * Isolation avoids configuration problems (multiple-versions of the same dependencies)
+  * Many containers ready to use (e.g., in [DockerHub](https://hub.docker.com))
+  * Security: if the system is compromised, the container can be destroyed and regenerated
+  * Easy backups of the complete environment
+  * Testing apps in multiple running environments
+  * It allows easy scaling of Web services
+* Drawbacks:
+  * CPU and storage requirements
+  * Slight increase in runtime of the app (specially if it is not using the same kernel)
+  * Learning curve: not appropriate for small apps if your development environment is alread configured
+  * All UI must be through command line or Web (no desktop UI).
+
+## Basic commands
 
 Comandos básicos para gestión de contenedores: docker run, docker container (ls, rm)
 - Run - - rm (ejemplo hola mundo ver qué pasa si no se pone rm)
 - Docker container ls
 - Run - i t
+
+* Conceptos: contenedor, imagen, volumen
 
 Añadiendo volúmenes: 
 - Volúmenes: -v
