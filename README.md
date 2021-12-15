@@ -187,7 +187,7 @@ We can also build our own Docker images. The first step is to create a `Dockerfi
 
 ```
 FROM alpine
-
+COPY index.html /usr/local/apache2/htdocs
 ```
 
 ### Guía
