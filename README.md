@@ -148,7 +148,7 @@ ls
 
 We can use *bind mounts* to easily backup a docker volume:
 ```
-docker run --rm -v $(pwd):/backup -v myapp:/data alpine sh -c "tar -C /data czf /backup/archive.tgz ."
+docker run --rm -v $(pwd):/backup -v myapp:/data alpine sh -c "tar czf /backup/archive.tgz -C /data ."
 ```
 
 We can list all the volumes managed by docker with:
