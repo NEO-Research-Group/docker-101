@@ -173,12 +173,28 @@ We can remove an image with:
 docker image rm alpine
 ```
 
+We can download an image without running a container based on it with:
+```
+docker pull alpine
+```
+
+All these images we are working with come from [DockerHub](https://hub.docker.com), a repository of Docker images. In particular, we have used only *official images*. Non-official images can be uploaded to DockerHub (previous registration) and are also available to any Docker user. In order to donwload them we must prepend the DockerHub username to the image name:
+```
+docker pull jfrchicanog/graybox
+```
+
+We can also build our own Docker images. The first step is to create a `Dockerfile` that contains the base image, a set of instructions to prepare the filesystem with the appropriate files and some metadata. One example follows:
+
+```
+FROM alpine
+
+```
+
 ### Guía
 
 Creando receta para contenedor
 - Dockerfile (ejemplo sencillo que yo tenga con App)
 - Docker build
-- Docker logs
 - Publicar contenedores, en Docker hub y github
 
 Docker-compose:
