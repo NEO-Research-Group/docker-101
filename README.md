@@ -109,6 +109,21 @@ ls /app
 ```
 We can see that it is empty (what did you expect?).
 
+* Let's add a file to the `/app` folder:
+```
+cat > /app/file.txt << EOF
+hello world
+EOF
+```
+* Once we exit and remove the container, the volume persist and we can mount it at anypoint in another container:
+
+```
+docker run --rm -it -v myapp:/data alpine
+ls /data
+cat /data/file.txt
+```
+In the previous example we can see the file that we created in a new mount point of this new container.
+
 ### Image management
 
 * We can see the images downloaded in our docker engine with:
