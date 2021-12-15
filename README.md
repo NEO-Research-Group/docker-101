@@ -141,7 +141,7 @@ EOF
 exit
 ```
 
-If we now list the files in the current drectory we will find `file.txt`:
+The format to specify a bind mount is `-v <host-path>:<container-path>`. In the previous example, the host path is provided by the `pwd` command to mount the current directory in `/app`. If we now list the files in the current drectory we will find `file.txt`:
 ```
 ls
 ```
