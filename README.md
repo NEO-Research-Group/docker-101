@@ -171,15 +171,7 @@ We can remove an image with:
 docker image rm alpine
 ```
 
-### Volume management
-
-
-Añadiendo volúmenes: 
-- Volúmenes: -v
-- Con nombre, enlazando a sistemas de ficheros, o ficheros concretos
-- Docker volume (ls, rm, create)
-
-
+### Guía
 
 Creando receta para contenedor
 - Dockerfile (ejemplo sencillo que yo tenga con App)
