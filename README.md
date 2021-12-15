@@ -186,9 +186,11 @@ docker pull jfrchicanog/graybox
 We can also build our own Docker images. The first step is to create a `Dockerfile` that contains the base image, a set of instructions to prepare the filesystem with the appropriate files and some metadata. One example follows:
 
 ```
-FROM alpine
+FROM httpd:alpine
 COPY index.html /usr/local/apache2/htdocs
 ```
+
+Let's download the [Dockerfile](https://github.com/NEO-Research-Group/docker-101/blob/xxxx/Dockerfile) and the [index.html]()file.
 
 ### Guía
 
