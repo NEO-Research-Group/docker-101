@@ -132,18 +132,9 @@ cat /data/file.txt
 ```
 In the previous example we can see the file that we created in a new mount point of this new container.
 
-We can list all the volumes managed by docker with:
-```
-docker volume ls
-```
-We can remove a volume using:
-```
-docker volume rm myapp
-```
-
 An alternative to docker volumes is to *bind* a file or directory in the host filesystem to a mount point in the container:
 ```
-docker run --rm -v $(pwd):/app alpine
+docker run --rm -it -v $(pwd):/app alpine
 cat > /app/file.txt << EOF
 hello world
 EOF
@@ -158,6 +149,15 @@ ls
 We can use *bind mounts* to easily backup a docker volume:
 ```
 docker run --rm -v $(pwd):/backup -v myapp:/data alpine sh -c "tar -C /data czf /backup/archive.tgz ."
+```
+
+We can list all the volumes managed by docker with:
+```
+docker volume ls
+```
+We can remove a volume using:
+```
+docker volume rm myapp
 ```
 
 ### Image management
