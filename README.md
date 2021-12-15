@@ -35,13 +35,13 @@ You can use your own docker installation to follow the tutorial or go to [play w
 
 ### Container management
 
-* Create and run a new container (alpine is the name of the *image*, a 5MB Linux distribution):
+Create and run a new container (alpine is the name of the *image*, a 5MB Linux distribution):
 ```
 docker run -it alpine
 ```
 The `-i` option connects the standard input of the shell with teh standard input of the container. The `-t` option creates a (virtual) terminal to the standard input and output of the docker process to allow easy interaction with the user.
 
-* Check that the container still exists after exiting it:
+Check that the container still exists after exiting it:
 ```
 docker container ls -a
 ```
@@ -51,29 +51,35 @@ docker run -d --name myweb httpd:alpine
 docker container ls
 ```
 We can assign names to containers using `--name` when creating it (otherwise, a random name is created by the docker engine). We can run it as a background process using `-d` (otherwise, the shell wil wait until the container stops).
-* Stop a container using:
+
+Stop a container using:
 ```
 docker container stop myweb
 ```
-* Start a container using:
+
+Start a container using:
 ```
 docker container start myweb
 ```
 All containers have a unique ID in addition to the name. We can use this ID also to manage the container (in `rm`, `stop`, `start`, etc.)
-* Let's see the log (standard output) of the container:
+
+Let's see the log (standard output) of the container:
 ```
 docker container logs -f myweb
 ```
 The `-f` option makes the docker command to wait for new content. Without this option the current log is shown and the command ends.
-* Let's remove all the containers using:
+
+Let's remove all the containers using:
 ```
 docker container rm myweb
 ```
-* We can run as many containers based on the same image as we want:
+
+We can run as many containers based on the same image as we want:
 ```
 for i in `seq 1 3`; do docker run -d httpd:alpine; done
 ```
-* When we stop these containers they still exist, becasue they keep come *state* (a whole filesystem), and they requires disk space. If we are not interested in the state (changes in the internal filesystem) we can get rid of the containers when they stop. We can do this with the `--rm` option:
+
+When we stop these containers they still exist, becasue they keep come *state* (a whole filesystem), and they requires disk space. If we are not interested in the state (changes in the internal filesystem) we can get rid of the containers when they stop. We can do this with the `--rm` option:
 ```
 docker run --rm -it alpine
 ```
@@ -85,7 +91,7 @@ docker container ls
 
 Containers have a network namespace completely separated from the host system. We can *bind* ports in the host system with ports in the container. This way we can map services in the container to different ports of our host machine.
 
-* We can use option `-p` to do such port bindings:
+We can use option `-p` to do such port bindings:
 
 ```
 docker run --rm -d -p 80:80 httpd:alpine
@@ -95,11 +101,12 @@ docker run --rm -d -p 80:80 httpd:alpine
 
 The file system of the containers and the host system are separated. We can mount virtual storage units, called `volumes` to any path in the container. Volumes' lifecycle is different from containers' lifecycle: they survive container removal.
 
-* Let's create a volume:
+Let's create a volume:
 ```
 docker create volume myapp
 ```
-* Let's mount that volume in a docker container with option `-v`:
+
+Let's mount that volume in a docker container with option `-v`:
 ```
 docker run --rm -it -v myapp:/app alpine
 ```
@@ -109,13 +116,14 @@ ls /app
 ```
 We can see that it is empty (what did you expect?).
 
-* Let's add a file to the `/app` folder:
+Let's add a file to the `/app` folder:
 ```
 cat > /app/file.txt << EOF
 hello world
 EOF
 ```
-* Once we exit and remove the container, the volume persist and we can mount it at anypoint in another container:
+
+Once we exit and remove the container, the volume persist and we can mount it at anypoint in another container:
 
 ```
 docker run --rm -it -v myapp:/data alpine
@@ -126,11 +134,11 @@ In the previous example we can see the file that we created in a new mount point
 
 ### Image management
 
-* We can see the images downloaded in our docker engine with:
+We can see the images downloaded in our docker engine with:
 ```
 docker image ls
 ```
-* We can remove an image with:
+We can remove an image with:
 ```
 docker image rm alpine
 ```
