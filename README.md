@@ -97,6 +97,8 @@ We can use option `-p` to do such port bindings:
 docker run --rm -d -p 80:80 httpd:alpine
 ```
 
+Observe the name of the image: `httpd:alpine`. The word before the colon is the `name` of the image, while the word after the colon is the `tag`. In this case we are downloading an image of an HTTP server based on the alpine distribution. Tags ease marking the image variants of well-known services.
+
 ### Volume management
 
 The file system of the containers and the host system are separated. We can mount virtual storage units, called `volumes` to any path in the container. Volumes' lifecycle is different from containers' lifecycle: they survive container removal.
