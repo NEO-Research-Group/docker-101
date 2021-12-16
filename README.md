@@ -190,13 +190,22 @@ FROM httpd:alpine
 COPY index.html /usr/local/apache2/htdocs
 ```
 
-Let's download the [Dockerfile](https://github.com/NEO-Research-Group/docker-101/blob/4ab32b2ae452c6debc8c261221574e023951ffd5/Dockerfile) and the [index.html](https://github.com/NEO-Research-Group/docker-101/blob/26831f58f4397201effa340cbb9758190a51aa2d/index.html) file.
+Let's download the [Dockerfile](https://github.com/NEO-Research-Group/docker-101/blob/4ab32b2ae452c6debc8c261221574e023951ffd5/Dockerfile) and the [index.html](https://github.com/NEO-Research-Group/docker-101/blob/26831f58f4397201effa340cbb9758190a51aa2d/index.html) file; and let's build our own image with:
+```
+docker build . -t mycont
+```
+
+The `-t` option is used to assign a name to the image.
+We can see the new image with `docker image ls`. We can now create a container based on our image and check that it shows the content of the `index.html` file:
+```
+docker run --rm -p 80:80 mycont
+```
+
+
 
 ### Guía
 
 Creando receta para contenedor
-- Dockerfile (ejemplo sencillo que yo tenga con App)
-- Docker build
 - Publicar contenedores, en Docker hub y github
 
 Docker-compose:
