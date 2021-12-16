@@ -190,7 +190,7 @@ FROM httpd:alpine
 COPY index.html /usr/local/apache2/htdocs
 ```
 
-Let's download the [Dockerfile](https://github.com/NEO-Research-Group/docker-101/blob/xxxx/Dockerfile) and the [index.html]()file.
+Let's download the [Dockerfile](https://github.com/NEO-Research-Group/docker-101/blob/xxxx/Dockerfile) and the [index.html]() file.
 
 ### Guía
 
