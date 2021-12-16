@@ -223,10 +223,10 @@ services:
   db:
     image: "mysql:5.7.30"
     environment:
-        - MYSQL_ROOT_PASSWORD=rootpassword
-        - MYSQL_DATABASE=6city
-        - MYSQL_USER=drupal_6city
-        - MYSQL_PASSWORD=tin2017
+        - MYSQL_ROOT_PASSWORD=root_password
+        - MYSQL_DATABASE=secret_db
+        - MYSQL_USER=secret_user
+        - MYSQL_PASSWORD=secret_password
     volumes:
         - "db:/var/lib/mysql"
     restart: always
