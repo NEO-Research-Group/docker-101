@@ -205,14 +205,17 @@ Once we have the image of our app, we can publish it in Docker repos, like Docke
 
 ### Docker-compose
 
+It is common that we have to use several services to run an application. For example, a typical information system needs a web app running in an application server and a database. We could  install in a container both: the application server and the database manager. But this is NOT the docker-way. In docker each container should run ONE servie (docker containers stop when the process with PID 1 stops). 
+
+`docker-compose` is a tool that allows us to combine several docker containers joined by virtual network. This way we can use the existing images of the individual components of our system and combine them to build the infraestructure we need.
+
+The first step to build our docker infraestructure with `docker-compose` is to write a `docker-compose.yml` file:
 
 
 ### Guía
 
 
 Docker-compose:
-- Docker no está pensado para meter todo en el mismo contenedor. Perdemos muchas de las ventajas
-- Se pueden combinar contenedor en redes virtuales: docker-compose
 - Mostrar ejemplos: web-neo, EWP, 
 - Comando docker-compose (up, down, start, stop, logs)
 
