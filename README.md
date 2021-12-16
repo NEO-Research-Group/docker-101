@@ -238,11 +238,38 @@ volumes:
 
 A more complex example, with 6 containers [here](https://github.com/jfrchicanog/docker-ewp/blob/baedb47a4841e1a51e65f286dabafb7852cdc0de/ewp/docker-compose.yml).
 
+Let's create a docker infraestructure for a Wordpress site. Use [this docker-compose file](docker-compose.yml). We can create all the containers, network and volumes and run the containers with:
+```
+docker-compose up -d
+```
+The `-d` option is to run the command in background. We can see that the containers are running with `docker container ls`. We can see the new volumes with `docker volume ls`. We should be able to connect to our wordpress installation using a browser: http://localhost:8080. Add a first user.
+
+We can check that the database has a user:
+```
+docker exec -it root_db_1 /bin/bash
+mysql -u exampleuser -pexamplepass exampledb
+select * from wp_users;
+```
+
+The command `docker exec` runs one process inside an existing container.
+
+We can stop the containers with `docker-compose stop` and start them again with `docker-compose start`, both of them run in the same directory where the `docker-compose.yml` file is located. In order to stop and/or remove all the containers and virtual networks we can run:
+```
+docker-compose down
+```
+
+Observe that the volumes remain: `docker volume ls` and they contain the files we need:
+```
+docker run --rm -v root_worpress_1:/wordpress alpine ls /wordpress
+```
+
+
+
 ### Guía
 
 
 Docker-compose:
-- Mostrar ejemplos: web-neo, EWP, 
+
 - Comando docker-compose (up, down, start, stop, logs)
 
 Cómo dockerizar mi sistema
