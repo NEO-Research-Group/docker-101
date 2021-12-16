@@ -238,11 +238,11 @@ volumes:
 
 A more complex example, with 6 containers [here](https://github.com/jfrchicanog/docker-ewp/blob/baedb47a4841e1a51e65f286dabafb7852cdc0de/ewp/docker-compose.yml).
 
-Let's create a docker infrastructure for a Wordpress site. Use [this docker-compose file](docker-compose.yml). We can create all the containers, network and volumes and run the containers with:
+Let's create a docker infrastructure for a Wordpress site. Use [this docker-compose file](https://raw.githubusercontent.com/NEO-Research-Group/docker-101/master/docker-compose.yml). We can create all the containers, network and volumes and run the containers with:
 ```
 docker-compose up -d
 ```
-The `-d` option is to run the command in background. We can see that the containers are running with `docker container ls`. We can see the new volumes with `docker volume ls`. We should be able to connect to our wordpress installation using a browser: http://localhost:8080. Add a first user.
+The `-d` option is to run the command in background. We can see that the containers are running with `docker container ls`, and the new volumes with `docker volume ls`. We should be able to connect to our wordpress installation using a browser: http://localhost:8080. Add a first user.
 
 We can check that the database has a user:
 ```
@@ -263,17 +263,11 @@ Observe that the volumes remain: `docker volume ls` and they contain the files w
 docker run --rm -v root_worpress_1:/wordpress alpine ls /wordpress
 ```
 
+It is possible to see the logs of all the containers with `docker-compose logs`.
+
+### How to *dockerize* my app/service?
 
 
-### Guía
-
-
-Docker-compose:
-
-- Comando docker-compose (up, down, start, stop, logs)
-
-Cómo dockerizar mi sistema
 - Ejemplo práctico con Web Wordpress: tiene archivos (volumen) base de datos, y dos contenedores, añadir proxy y aprovechar para explicar el alias y DN en redes internas
 
-Más allá: docker swarm y kubernetes
 
