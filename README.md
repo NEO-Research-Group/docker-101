@@ -201,12 +201,14 @@ We can see the new image with `docker image ls`. We can now create a container b
 docker run --rm -p 80:80 mycont
 ```
 
+Once we have the image of our app, we can publish it in Docker repos, like DockerHub (follow [these instructions](https://docs.docker.com/docker-hub/repos/)) or GitHub Packages (follow [these ones](https://docs.github.com/es/packages/working-with-a-github-packages-registry/working-with-the-container-registry)).
+
+### Docker-compose
+
 
 
 ### Guía
 
-Creando receta para contenedor
-- Publicar contenedores, en Docker hub y github
 
 Docker-compose:
 - Docker no está pensado para meter todo en el mismo contenedor. Perdemos muchas de las ventajas
