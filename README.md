@@ -260,7 +260,7 @@ docker-compose down
 
 Observe that the volumes remain: `docker volume ls` and they contain the files we need:
 ```
-docker run --rm -v root_worpress_1:/wordpress alpine ls /wordpress
+docker run --rm -v root_worpress:/wordpress alpine ls /wordpress
 ```
 
 It is possible to see the logs of all the containers with `docker-compose logs`.
