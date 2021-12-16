@@ -210,6 +210,31 @@ It is common that we have to use several services to run an application. For exa
 `docker-compose` is a tool that allows us to combine several docker containers joined by virtual network. This way we can use the existing images of the individual components of our system and combine them to build the infraestructure we need.
 
 The first step to build our docker infraestructure with `docker-compose` is to write a `docker-compose.yml` file:
+```
+version: '2'
+services:
+  web:
+    build: ./web
+    volumes:
+        - "files:/var/www/html"
+    ports:
+        - "8081:80"
+    restart: always
+  db:
+    image: "mysql:5.7.30"
+    environment:
+        - MYSQL_ROOT_PASSWORD=rootpassword
+        - MYSQL_DATABASE=6city
+        - MYSQL_USER=drupal_6city
+        - MYSQL_PASSWORD=tin2017
+    volumes:
+        - "db:/var/lib/mysql"
+    restart: always
+
+volumes:
+    db:
+    files:
+```
 
 
 ### Guía
