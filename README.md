@@ -190,7 +190,7 @@ FROM httpd:alpine
 COPY index.html /usr/local/apache2/htdocs
 ```
 
-Let's download the [Dockerfile](https://github.com/NEO-Research-Group/docker-101/blob/4ab32b2ae452c6debc8c261221574e023951ffd5/Dockerfile) and the [index.html](https://github.com/NEO-Research-Group/docker-101/blob/26831f58f4397201effa340cbb9758190a51aa2d/index.html) file; and let's build our own image with:
+Let's download the [Dockerfile](https://raw.githubusercontent.com/NEO-Research-Group/docker-101/4ab32b2ae452c6debc8c261221574e023951ffd5/Dockerfile) and the [index.html](https://github.com/NEO-Research-Group/docker-101/blob/26831f58f4397201effa340cbb9758190a51aa2d/index.html) file; and let's build our own image with:
 ```
 docker build . -t mycont
 ```
