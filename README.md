@@ -236,6 +236,7 @@ volumes:
     files:
 ```
 
+A more complex example, with 6 containers [here](https://github.com/jfrchicanog/docker-ewp/blob/baedb47a4841e1a51e65f286dabafb7852cdc0de/ewp/docker-compose.yml).
 
 ### Guía
 
