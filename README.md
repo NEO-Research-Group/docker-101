@@ -238,7 +238,7 @@ volumes:
 
 A more complex example, with 6 containers [here](https://github.com/jfrchicanog/docker-ewp/blob/baedb47a4841e1a51e65f286dabafb7852cdc0de/ewp/docker-compose.yml).
 
-Let's create a docker infraestructure for a Wordpress site. Use [this docker-compose file](docker-compose.yml). We can create all the containers, network and volumes and run the containers with:
+Let's create a docker infrastructure for a Wordpress site. Use [this docker-compose file](docker-compose.yml). We can create all the containers, network and volumes and run the containers with:
 ```
 docker-compose up -d
 ```
