@@ -274,7 +274,3 @@ We can follow the next steps to run in docker containers an app/service running 
 4. Prepare a docker volume containing each logical set of files.
 5. Prepare a `docker-compose.yml` file with the instructions to build the docker infrastructure.
 
-
-- Ejemplo práctico con Web Wordpress: tiene archivos (volumen) base de datos, y dos contenedores, añadir proxy y aprovechar para explicar el alias y DN en redes internas
-
-
