@@ -271,6 +271,6 @@ We can follow the next steps to run in docker containers an app/service running 
 1. Identify the services you need: database, application server, web server, etc.
 2. Find or prepare a docker image for each service.
 3. Identify the files you need to store.
-4. Prepare a docker volume containing each logical set of files.
+4. Prepare a docker volume containing each logical set of files. In the case of files requiring special import (like databases), it is better create an empty volume and use the import procedure using the appropriate container.
 5. Prepare a `docker-compose.yml` file with the instructions to build the docker infrastructure.
 
