@@ -105,7 +105,7 @@ The file system of the containers and the host system are separated. We can moun
 
 Let's create a volume:
 ```
-docker create volume myapp
+docker volume create myapp
 ```
 
 Let's mount that volume in a docker container with option `-v`:
