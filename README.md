@@ -6,17 +6,17 @@
 * ¿Qué son los *contenedores*? Podemos pensar en un contenedor como una máquina virtual pequeña y eficiente
 * ¿Por qué son *eficientes*? Porque usan el kernel del sistema operativo de la máquina anfitriona y usan mecanismos para aislar los recursos (_cgroups_ y _namespaces_), como procesos, memoria, usuarios, interfaces de red, etc.
 
-|![Container vs. virtual machine](https://i1.wp.com/www.docker.com/blog/wp-content/uploads/Blog.-Are-containers-..VM-Image-1-1024x435.png?ssl=1)|
+|![Contenedor frente a máquina virtual](https://i1.wp.com/www.docker.com/blog/wp-content/uploads/Blog.-Are-containers-..VM-Image-1-1024x435.png?ssl=1)|
 |:--:|
-|Containers (left) vd. virtual machines (right).<br/>*Source: Jenny Fong (https://www.docker.com/blog/containers-replacing-virtual-machines/)*|
+|Contenedores (izquierda) frente a máquina virtual (derecha).<br/>*Fuente: Jenny Fong (https://www.docker.com/blog/containers-replacing-virtual-machines/)*|
 
 
-* Advantages:
-  * The running environment is prepared once and run many times
-  * Isolation avoids configuration problems (multiple-versions of the same dependencies)
-  * Many containers ready to use (e.g., in [DockerHub](https://hub.docker.com))
-  * Security: if the system is compromised, the container can be destroyed and regenerated
-  * Easy backups of the complete environment
+* Ventajas:
+  * El entorno de ejecución se prepara una vez y se ejecuta muchas veces
+  * El aislamiento previene problemas de configuración (múltiples versiones de las mismas dependencias)
+  * Hay muchos contenedores preparados para ser usados (por ejemplo en [DockerHub](https://hub.docker.com))
+  * Seguridad: si el sistema está comprometido, el contenedor se puede destruir y regenerar de nuevo
+  * Se pueden hacer copias de seguridad del entorno completo
   * Testing apps in multiple running environments
   * It allows easy scaling of Web services
 * Drawbacks:
