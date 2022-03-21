@@ -17,10 +17,10 @@
   * Hay muchos contenedores preparados para ser usados (por ejemplo en [DockerHub](https://hub.docker.com))
   * Seguridad: si el sistema está comprometido, el contenedor se puede destruir y regenerar de nuevo
   * Se pueden hacer copias de seguridad del entorno completo
-  * Testing apps in multiple running environments
-  * It allows easy scaling of Web services
-* Drawbacks:
-  * CPU and storage requirements
+  * Se pueden probar las aplicaciones en múltiples entornos de ejecución
+  * Permite el escalado sencillo de servicios Web
+* Desventajas:
+  * Requisitos de CPU y almacenamiento
   * Slight increase in runtime of the app (specially if it is not using the same kernel)
   * Learning curve: not appropriate for small apps if your development environment is alread configured
   * All UI must be through command line or Web (no desktop UI).
