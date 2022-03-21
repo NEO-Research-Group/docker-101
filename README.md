@@ -2,7 +2,7 @@
 
 ## Conceptos básicos
 
-* ¿qué es *docker*? Un sistema de gestión de *contenedor*
+* ¿Qué es *docker*? Un sistema de gestión de *contenedor*
 * ¿Qué son los *contenedores*? Podemos pensar en un contenedor como una máquina virtual pequeña y eficiente
 * ¿Por qué son *eficientes*? Porque usan el kernel del sistema operativo de la máquina anfitriona y usan mecanismos para aislar los recursos (_cgroups_ y _namespaces_), como procesos, memoria, usuarios, interfaces de red, etc.
 
@@ -21,8 +21,8 @@
   * Permite el escalado sencillo de servicios Web
 * Desventajas:
   * Requisitos de CPU y almacenamiento
-  * Slight increase in runtime of the app (specially if it is not using the same kernel)
-  * Learning curve: not appropriate for small apps if your development environment is alread configured
+  * Ligero aumento del tiempo de ejecución de la aplicación (especialmente si no puede usando el mismo kernel)
+  * Curva de aprendizaje: no es apropiadopara aplicaciones pequeñas not appropriate for small apps if your development environment is alread configured
   * All UI must be through command line or Web (no desktop UI).
 
 * *Image*: An image is a *container template*. There can be many running containers based on the same image. The relationship between container and image is the same as process and program (or object and class).
