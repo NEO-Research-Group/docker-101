@@ -22,8 +22,8 @@
 * Desventajas:
   * Requisitos de CPU y almacenamiento
   * Ligero aumento del tiempo de ejecución de la aplicación (especialmente si no puede usando el mismo kernel)
-  * Curva de aprendizaje: no es apropiadopara aplicaciones pequeñas not appropriate for small apps if your development environment is alread configured
-  * All UI must be through command line or Web (no desktop UI).
+  * Curva de aprendizaje: no es apropiado para aplicaciones pequeñas si el entorno de desarrollo ya está configurado
+  * Toda la interfaz de usuario con la aplicación debe ser a través de línea de comando o Web
 
 * *Image*: An image is a *container template*. There can be many running containers based on the same image. The relationship between container and image is the same as process and program (or object and class).
 
