@@ -67,19 +67,19 @@ Para ver el log (salida estándar) de un contenedor hacemos:
 ```
 docker container logs -f myweb
 ```
-La opción `-f` indica option makes the docker command to wait for new content. Without this option the current log is shown and the command ends.
+La opción `-f` se usa para que el comando espere a que se produzca nuevo contenido (en el log). Si no se usa esta opción se muestra el contenido del log hasta el momento y termina.
 
-Let's remove all the containers using:
+Podemos eliminar un contenedor usando:
 ```
 docker container rm myweb
 ```
 
-We can run as many containers based on the same image as we want:
+Podemos ejecutar varios contenedores basados en la misma imagen:
 ```
 for i in `seq 1 3`; do docker run -d httpd:alpine; done
 ```
 
-When we stop these containers they still exist, becasue they keep come *state* (a whole filesystem), and they requires disk space. If we are not interested in the state (changes in the internal filesystem) we can get rid of the containers when they stop. We can do this with the `--rm` option:
+Cuando detenemos los contenedores ocupan espacio en disco porque mantienen *estado* (un sistema de ficheros completo). Si no estamos interesados en este estado (cambios en el sistema de ficheros del contenedor) podemos eliminar los contenedores cuando temrinen. Podemos hacer esto ejecutádolos con la opción `--rm`:
 ```
 docker run --rm -it alpine
 ```
