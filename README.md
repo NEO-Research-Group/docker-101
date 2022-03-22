@@ -184,33 +184,32 @@ Todas las imágenes con las que trabajamos se descargan de [DockerHub](https://h
 docker pull jfrchicanog/graybox
 ```
 
-We can also build our own Docker images. The first step is to create a `Dockerfile` that contains the base image, a set of instructions to prepare the filesystem with the appropriate files and some metadata. One example follows:
-
+Podemos construir nuestras propias imágenes de Docker. El primer paso consiste en crear un `Dockerfile` que contiene la imagen base, un conjunto de instrucciones pra preparar el sistema de ficheros con los ficheros apropiados y metadatos. He aquí un ejemplo:
 ```
 FROM httpd:alpine
 COPY index.html /usr/local/apache2/htdocs
 ```
 
-Let's download the [Dockerfile](https://raw.githubusercontent.com/NEO-Research-Group/docker-101/4ab32b2ae452c6debc8c261221574e023951ffd5/Dockerfile) and the [index.html](https://raw.githubusercontent.com/NEO-Research-Group/docker-101/26831f58f4397201effa340cbb9758190a51aa2d/index.html) file; and let's build our own image with:
+Descarguemos el fichero [Dockerfile](https://raw.githubusercontent.com/NEO-Research-Group/docker-101/4ab32b2ae452c6debc8c261221574e023951ffd5/Dockerfile) y el fichero [index.html](https://raw.githubusercontent.com/NEO-Research-Group/docker-101/26831f58f4397201effa340cbb9758190a51aa2d/index.html); y construyamos nuestra propia imagen con:
 ```
 docker build . -t mycont
 ```
 
-The `-t` option is used to assign a name to the image.
-We can see the new image with `docker image ls`. We can now create a container based on our image and check that it shows the content of the `index.html` file:
+La opción `-t` se usa para asignar un nombre a la imagen.
+Podemos ver la nueva imagen con `docker image ls`. Podemos crear un contenedor basado en nuestra imagen para comprobar que se muestra el contenido del fichero `index.html`:
 ```
 docker run --rm -p 80:80 mycont
 ```
 
-Once we have the image of our app, we can publish it in Docker repos, like DockerHub (follow [these instructions](https://docs.docker.com/docker-hub/repos/)) or GitHub Packages (follow [these ones](https://docs.github.com/es/packages/working-with-a-github-packages-registry/working-with-the-container-registry)).
+Una vez que tenemos la imagen de nuestra aplicación, podemos publicarla en repositorios de Docker, como DockerHub (siguiendo  [estas instrucciones](https://docs.docker.com/docker-hub/repos/)) o GitHub Packages (siguiendo [estas otras instrucciones](https://docs.github.com/es/packages/working-with-a-github-packages-registry/working-with-the-container-registry)).
 
 ### Docker-compose
 
-It is common that we have to use several services to run an application. For example, a typical information system needs a web app running in an application server and a database. We could  install in a container both: the application server and the database manager. But this is NOT the docker-way. In docker each container should run ONE servie (docker containers stop when the process with PID 1 stops). 
+Es habitual que tengamos que usar varios servicios para ejecutar una aplicación. Por ejemplo, un sistema de información típico está formado por una aplicación Web que corre en un servidor de aplicaciones y una base de datos. Podríamos instalar en un único contenedor ambos: el servidor de aplicaciones y el sistema gestor de bases de datos. Pero esta no es la forma de hacerlo en docker. En docker cada contenedor debería ejecutar solo UN servicio (los contenedores docker se detienen cuando el proceso pricnipal, con PID 1, termina).
 
-`docker-compose` is a tool that allows us to combine several docker containers joined by virtual network. This way we can use the existing images of the individual components of our system and combine them to build the infraestructure we need.
+`docker-compose` es una herramienta que nos permite combinar varios contenedores docker conectados mediante una red virtual. De esta forma podemos usar las imágenes existentes de los componentes individuales de nuestro sistema y combinarlos para contruir la infraestructura que necesitamos.
 
-The first step to build our docker infraestructure with `docker-compose` is to write a `docker-compose.yml` file:
+El primer paso para construir nuestra infraestructura docker con `docker-compose` es escribir un fichero `docker-compose.yml`:
 ```
 version: '2'
 services:
@@ -237,29 +236,29 @@ volumes:
     files:
 ```
 
-A more complex example, with 6 containers [here](https://github.com/jfrchicanog/docker-ewp/blob/baedb47a4841e1a51e65f286dabafb7852cdc0de/ewp/docker-compose.yml).
+Un ejemplo más complejo, con 6 contenedores se presenta [aquí](https://github.com/jfrchicanog/docker-ewp/blob/baedb47a4841e1a51e65f286dabafb7852cdc0de/ewp/docker-compose.yml).
 
-Let's create a docker infrastructure for a Wordpress site. Use [this docker-compose file](https://raw.githubusercontent.com/NEO-Research-Group/docker-101/master/docker-compose.yml). We can create all the containers, network and volumes and run the containers with:
+Vamos a crear una infraestructura docker para un sitio de Wordpress. Usemos [este fichero docker-compose](https://raw.githubusercontent.com/NEO-Research-Group/docker-101/master/docker-compose.yml). Podemos crear todos los contenedores, redes y volúmenes y ejecutar los contenedores con:
 ```
 docker-compose up -d
 ```
-The `-d` option is to run the command in background. We can see that the containers are running with `docker container ls`, and the new volumes with `docker volume ls`. We should be able to connect to our wordpress installation using a browser: http://localhost:8080. Add a first user.
+La opción `-d` permite ejecutar el comando en segundo plano. Podemos ver que los contenedores están corriendo con el comando `docker container ls`, y los nuevos volúmenes con `docker volume ls`. Deberíamos ser capaces de conectarnos a nuestra instalación de wordpress usando el navegador: http://localhost:8080. Vamos a añadir un primer usuario.
 
-We can check that the database has a user:
+Podemos comprobar que la base de datos ha almacenado la información de ese primer usuario haciendo:
 ```
 docker exec -it root_db_1 /bin/bash
 mysql -u exampleuser -pexamplepass exampledb
 select * from wp_users;
 ```
 
-The command `docker exec` runs one process inside an existing container.
+El comando `docker exec` ejecuta un proceso dentro de un contenedor activo.
 
-We can stop the containers with `docker-compose stop` and start them again with `docker-compose start`, both of them run in the same directory where the `docker-compose.yml` file is located. In order to stop and/or remove all the containers and virtual networks we can run:
+Podemos detener los contenedores con `docker-compose stop` y arrancarlos de nuevo con `docker-compose start`. Ambos deben ejecutarse en el mismo directorio donde se encuentra el fichero `docker-compose.yml`. Para detener y/o eliminar todos los contenedores y redes virtuales podemos hacer:
 ```
 docker-compose down
 ```
 
-Observe that the volumes remain: `docker volume ls` and they contain the files we need:
+Observemos que los volúmenes sobreviven al comando anterior: `docker volume ls` y contienen los ficheros que necesitamos:
 ```
 docker run --rm -t -v root_wordpress:/wordpress alpine ls /wordpress
 ```
