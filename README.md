@@ -97,28 +97,28 @@ Debemos usar la opción `-p` para implementar estos vínculos:
 docker run --rm -d -p 80:80 httpd:alpine
 ```
 
-Observemos el nombre de la imagen: `httpd:alpine`. La palabra delante de los dos puntos es el *nombre* de la imagen, mientras que la palabra tras los dos puntos es la *etiqueta*. En este caso estamos descargando una imagen de un servidor HTTPIn this case we are downloading an image of an HTTP server based on the alpine distribution. Tags ease marking the image variants of well-known services.
+Observemos el nombre de la imagen: `httpd:alpine`. La palabra delante de los dos puntos es el *nombre* de la imagen, mientras que la palabra tras los dos puntos es la *etiqueta*. En este caso estamos descargando una imagen de un servidor HTTP basado en la distribución alpine de Linux. Las etiquetas permiten marcar las variantes de imágenes de servicios conocidos.
 
-### Volume management
+### Gestión de volúmenes
 
-The file system of the containers and the host system are separated. We can mount virtual storage units, called `volumes` to any path in the container. Volumes' lifecycle is different from containers' lifecycle: they survive container removal.
+El sistema de ficheros de los contenedores y del sistema anfitrión están separados. Podemos montar unidades de almacenamiento virtuales, llamadas *volúmenes* en cualquier ruta del contenedor. El ciclo de vida de los volúmenes es diferente del ciclo de vida de los contenedores: sobreviven la eliminación del contenedor.
 
-Let's create a volume:
+Vamos a crear un volumen:
 ```
 docker volume create myapp
 ```
 
-Let's mount that volume in a docker container with option `-v`:
+Montemos el volumen en un contenedor docker con la opción `-v`:
 ```
 docker run --rm -it -v myapp:/app alpine
 ```
-The previous command mounts the volume called `myapp` in `/app`. Let's see what is there:
+El comando anterior monta el volumen llamado `myapp` en la ruta `/app`. Veamos lo que hay allí:
 ```
 ls /app
 ```
-We can see that it is empty (what did you expect?).
+Podemos ver que está vacío.
 
-Let's add a file to the `/app` folder:
+Vamos a añadir un fichero al directorio `/app`:
 ```
 cat > /app/file.txt << EOF
 hello world
