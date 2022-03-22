@@ -125,16 +125,16 @@ hello world
 EOF
 ```
 
-Once we exit and remove the container, the volume persist and we can mount it at anypoint in another container:
+Una vez que salimos y eliminamos el contenedor el volumen persiste y podemos montarlo en cualquier punto de otro contenedor:
 
 ```
 docker run --rm -it -v myapp:/data alpine
 ls /data
 cat /data/file.txt
 ```
-In the previous example we can see the file that we created in a new mount point of this new container.
+En el ejemplo anterior podemos ver el fichero que hemos creado en otro contenedor en una ruta diferente en este nuevo contenedor.
 
-An alternative to docker volumes is to *bind* a file or directory in the host filesystem to a mount point in the container:
+Una alternativa a los volúmenes de docker es *vincular* un fichero o directorio del sistema anfitrión a un punto de montaje (ruta) en el contenedor:
 ```
 docker run --rm -it -v $(pwd):/app alpine
 cat > /app/file.txt << EOF
@@ -143,42 +143,43 @@ EOF
 exit
 ```
 
-The format to specify a bind mount is `-v <host-path>:<container-path>`. In the previous example, the host path is provided by the `pwd` command to mount the current directory in `/app`. If we now list the files in the current drectory we will find `file.txt`:
+La forma de especificar estos esos vínculos, llamados *bind mounts* en inglés, es mediante la opción `-v <host-path>:<container-path>`. En el ejemplo anterior, la ruta del sistema anfitrión es proporcionada por el comando `pwd` (funciona en Linux) para montar el directorio actual en `/app`. Si listamos los ficheros del directorio actual encontraremos el fichero `file.txt`:
 ```
 ls
 ```
 
-We can use *bind mounts* to easily backup a docker volume:
+Podemos usar *bind mounts* para hacer una copia de seguridad de un volumen:
 ```
 docker run --rm -v $(pwd):/backup -v myapp:/data alpine sh -c "tar czf /backup/archive.tgz -C /data ."
 ```
 
-We can list all the volumes managed by docker with:
+Podemos listar todos los volúmenes gestiondos por docker con:
 ```
 docker volume ls
 ```
-We can remove a volume using:
+Podemos eliminar un volumen usando:
 ```
 docker volume rm myapp
 ```
 
-### Image management
+### Gestión de imágenes
 
-We can see the images downloaded in our docker engine with:
+Podemos ver las imágenes descargadas y creadas en el motor de docker con:
 ```
 docker image ls
 ```
-We can remove an image with:
+Podemos eliminar imágenes con:
 ```
 docker image rm alpine
 ```
 
-We can download an image without running a container based on it with:
+Podemos descargar una imagen sin ejecutar un contenedor basado en ella usando `docker pull`:
 ```
 docker pull alpine
 ```
 
-All these images we are working with come from [DockerHub](https://hub.docker.com), a repository of Docker images. In particular, we have used only *official images*. Non-official images can be uploaded to DockerHub (previous registration) and are also available to any Docker user. In order to donwload them we must prepend the DockerHub username to the image name:
+Todas las imágenes con las que trabajamos se descargan de [DockerHub](https://hub.docker.com), un repositorio de imágenes Docker. En particular, hemos usado solamente *imágenes oficiales*. Se pueden subir imágenes no oficiales a DockerHub (previo registro) y también están disponibles para cualquier usuario de docker. Para descargarlas debemos anteponer el nombre del usuario de DockerHub al nombre de la imagen:
+
 ```
 docker pull jfrchicanog/graybox
 ```
