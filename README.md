@@ -87,17 +87,17 @@ docker run --rm -it alpine
 docker container ls
 ```
 
-### Port mapping
+### Mapeo de puertos
 
-Containers have a network namespace completely separated from the host system. We can *bind* ports in the host system with ports in the container. This way we can map services in the container to different ports of our host machine.
+Los contenedores tienen un espacio de nombres de red completamente separado del espacio de red de la máquina anfitriona. Podemos *vincular* puertos del sistema anfitrión con puertos del contenedor. De esta forma podemos mapear servicios del contenedor a puertos diferentes de nuestra máquina anfitriona.
 
-We can use option `-p` to do such port bindings:
+Debemos usar la opción `-p` para implementar estos vínculos:
 
 ```
 docker run --rm -d -p 80:80 httpd:alpine
 ```
 
-Observe the name of the image: `httpd:alpine`. The word before the colon is the `name` of the image, while the word after the colon is the `tag`. In this case we are downloading an image of an HTTP server based on the alpine distribution. Tags ease marking the image variants of well-known services.
+Observemos el nombre de la imagen: `httpd:alpine`. La palabra delante de los dos puntos es el *nombre* de la imagen, mientras que la palabra tras los dos puntos es la *etiqueta*. En este caso estamos descargando una imagen de un servidor HTTPIn this case we are downloading an image of an HTTP server based on the alpine distribution. Tags ease marking the image variants of well-known services.
 
 ### Volume management
 
