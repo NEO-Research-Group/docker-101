@@ -25,7 +25,7 @@
   * Curva de aprendizaje: no es apropiado para aplicaciones pequeñas si el entorno de desarrollo ya está configurado
   * Toda la interfaz de usuario con la aplicación debe ser a través de línea de comando o Web
 
-* *Imagen*: Una imagen es una *plantilla de contenedor*. Puede haber muchos contenedores en ejecución basados en la misma imagen . La relación entre un contenedor y una imagen es la misma que entre un proceso y un programa (o un objeto y una clase).
+* *Imagen*: Una imagen es una *plantilla de contenedor*. Puede haber muchos contenedores en ejecución basados en la misma imagen. La relación entre un contenedor y una imagen es la misma que entre un proceso y un programa (o un objeto y una clase).
 
 * *Volumen*: Unidad de almacenamiento, ruta en el sistema de ficheros de lamáquina anfitriona o sistema de ficheros temporal que podemos montar en cualquier punto del sistema de ficheros del contenedor.
 
@@ -33,41 +33,41 @@
 
 Puede usar docker instalado en tu máquina para seguir el tutorial o ir al sitio [play with docker](https://labs.play-with-docker.com) si no quiere instalar nada.
 
-### Container management
+### Gestión de contenedores
 
-Create and run a new container (alpine is the name of the *image*, a 5MB Linux distribution):
+Creemos y ejecutemos un nuevo contenedor (`alpine` es el nombre de la *imagen*, una distribución de Linux de 5MB):
 ```
 docker run -it alpine
 ```
-The `-i` option connects the standard input of the shell with teh standard input of the container. The `-t` option creates a (virtual) terminal to the standard input and output of the docker process to allow easy interaction with the user.
+La opción `-i` conecta la entrada estándar del shell con la entrada estándar del contenedor. La opción `-t` crea un terminal (virtual) y lo conecta a la entrada y salida estándar del proceso que se ejecuta en docker para permitir una interacción con el usuario.
 
-Check that the container still exists after exiting it:
+Comprobemos que el contenedor aún existe tras salir de él:
 ```
 docker container ls -a
 ```
-Without option `-a`, the `ls` command only returns running containers. Example:
+Sin la opción `-a`, el comando `ls` solo muestra los contenedores en ejecución (no los detenidos). Por ejemplo:
 ```
 docker run -d --name myweb httpd:alpine
 docker container ls
 ```
-We can assign names to containers using `--name` when creating it (otherwise, a random name is created by the docker engine). We can run it as a background process using `-d` (otherwise, the shell wil wait until the container stops).
+Se pueden asignar nombres a los contenedores usando la opticón `--name` cuando se crean (en caso contrario, el motor de docker les asignará un nombre aleatorio). Podemos ejecutar los contenedores en segundo plano usando la opción `-d` (en otro caso, el shell esperará hasta que el contenedor se detenga, lo cual hace cuando termine el proceso principal del contenedor).
 
-Stop a container using:
+Para detener un contenedor podemos usar:
 ```
 docker container stop myweb
 ```
 
-Start a container using:
+Los contenedores detenidos pueden arrancarse de nuevo con:
 ```
 docker container start myweb
 ```
-All containers have a unique ID in addition to the name. We can use this ID also to manage the container (in `rm`, `stop`, `start`, etc.)
+Todos los contenedores tienen un ID único además de su nombre. Podemos usar ese ID también para referirnos al contenedor en los comandos de gestión de contenedores (como `rm`, `stop`, `start`, etc.)
 
-Let's see the log (standard output) of the container:
+Para ver el log (salida estándar) de un contenedor hacemos:
 ```
 docker container logs -f myweb
 ```
-The `-f` option makes the docker command to wait for new content. Without this option the current log is shown and the command ends.
+La opción `-f` indica option makes the docker command to wait for new content. Without this option the current log is shown and the command ends.
 
 Let's remove all the containers using:
 ```
