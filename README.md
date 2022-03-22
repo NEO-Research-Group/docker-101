@@ -25,13 +25,13 @@
   * Curva de aprendizaje: no es apropiado para aplicaciones pequeñas si el entorno de desarrollo ya está configurado
   * Toda la interfaz de usuario con la aplicación debe ser a través de línea de comando o Web
 
-* *Image*: An image is a *container template*. There can be many running containers based on the same image. The relationship between container and image is the same as process and program (or object and class).
+* *Imagen*: Una imagen es una *plantilla de contenedor*. Puede haber muchos contenedores en ejecución basados en la misma imagen . La relación entre un contenedor y una imagen es la misma que entre un proceso y un programa (o un objeto y una clase).
 
-* *Volume*: Storage unit, path in the host file system or temporal filesystem that we can mount at any point in a container.
+* *Volumen*: Unidad de almacenamiento, ruta en el sistema de ficheros de lamáquina anfitriona o sistema de ficheros temporal que podemos montar en cualquier punto del sistema de ficheros del contenedor.
 
-## Basic commands
+## Comandos básicos
 
-You can use your own docker installation to follow the tutorial or go to [play with docker](https://labs.play-with-docker.com) if you don't want to install anything.
+Puede usar docker instalado en tu máquina para seguir el tutorial o ir al sitio [play with docker](https://labs.play-with-docker.com) si no quiere instalar nada.
 
 ### Container management
 
