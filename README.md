@@ -263,16 +263,16 @@ Observemos que los volúmenes sobreviven al comando anterior: `docker volume ls`
 docker run --rm -t -v root_wordpress:/wordpress alpine ls /wordpress
 ```
 
-It is possible to see the logs of all the containers with `docker-compose logs`.
+Es posible ver los logs de todos los contenedores con `docker-compose logs`.
 
-### How to *dockerize* my app/service?
+### ¿Cómo *dockerizar* una aplicación/servicio?
 
-We can follow the next steps to run in docker containers an app/service running in our system:
-1. Identify the services you need: database, application server, web server, etc.
-2. Find or prepare a docker image for each service.
-3. Identify the files you need to store.
-4. Prepare a docker volume containing each logical set of files. In the case of files requiring special import (like databases), it is better create an empty volume and use the import procedure using the appropriate container.
-5. Adjust the credentials and hosts of databases (or other services) in the files.
-6. Prepare a `docker-compose.yml` file with the instructions to build the docker infrastructure.
-7. Iterate over steps 4 to 6 to adjust details until it works.
+Podemos seguir los siguientes pasos para ejecutar en contenedores docker una aplicación/servicio que se ejecuta en nuestro sistema:
+1. Identificar los servicios que neceistamos: base de datos, servidor de aplicaciones, servidor web, etc.
+2. Encontrar o preparar una imagen docker para cada servicio.
+3. Identificar los ficheros que necesitamos almacenar.
+4. Preparar un volumen de docker que contenga cada conjunto lógico de ficheros. En el caso de ficheros que requieren una forma especial de importación (como bases de datos), es mejor crear un volumen vacío y ejecutar el procedimiento de importación contenedor apropiado.
+5. Ajustar las credenciales y nombres de máquinas de las bases de datos (u otros servicios) en los ficheros de configuración apropiados.
+6. Preparar un fichero `docker-compose.yml` con las instrucciones para construir la infraestructura docker.
+7. Iterar sobre los pasos 5 a 6 para ajustar detalles hasta que funcione.
 
