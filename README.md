@@ -6,7 +6,7 @@
 * ¿Qué son los *contenedores*? Podemos pensar en un contenedor como una máquina virtual pequeña y eficiente
 * ¿Por qué son *eficientes*? Porque usan el kernel del sistema operativo de la máquina anfitriona y usan mecanismos para aislar los recursos (_cgroups_ y _namespaces_), como procesos, memoria, usuarios, interfaces de red, etc.
 
-|![Contenedor frente a máquina virtual](https://i1.wp.com/www.docker.com/blog/wp-content/uploads/Blog.-Are-containers-..VM-Image-1-1024x435.png?ssl=1)|
+|![Contenedor frente a máquina virtual](https://www.docker.com/wp-content/uploads/Blog.-Are-containers-..VM-Image-1-1024x435.png)|
 |:--:|
 |Contenedores (izquierda) frente a máquina virtual (derecha).<br/>*Fuente: Jenny Fong (https://www.docker.com/blog/containers-replacing-virtual-machines/)*|
 
