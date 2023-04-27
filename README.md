@@ -8,7 +8,7 @@
 
 |![Contenedor frente a máquina virtual](https://www.docker.com/wp-content/uploads/Blog.-Are-containers-..VM-Image-1-1024x435.png)|
 |:--:|
-|Contenedores (izquierda) frente a máquina virtual (derecha).<br/>*Fuente: Jenny Fong (https://www.docker.com/blog/containers-replacing-virtual-machines/)*|
+|Contenedores (izquierda) frente a máquina virtual (derecha).<br/>*Fuente: Simran Arora (https://cloudacademy.com/blog/docker-vs-virtual-machines-differences-you-should-know/#:~:text=Docker%20containers%20are%20considered%20suitable,to%20run%20on%20different%20OS.)*|
 
 
 * Ventajas:
