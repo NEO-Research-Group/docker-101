@@ -6,10 +6,9 @@
 * ¿What are *containers*? We can think in a container as a small and very efficient virtual machine
 * ¿Why are they *efficient*? Because they share the kernel of the host machine and use some mechanisms for isolating resources (cgroups and namespaces), like processes, memory, users, network interfaces, etc.
 
-|![Container vs. virtual machine](https://www.docker.com/wp-content/uploads/Blog.-Are-containers-..VM-Image-1-1024x435.png)|
+|![Container vs. virtual machine](./Docker-vs..png)|
 |:--:|
-|Containers (left) vd. virtual machines (right).<br/>*Source: Jenny Fong (https://www.docker.com/blog/containers-replacing-virtual-machines/)*|
-
+|Containers (left) vd. virtual machines (right).<br/>*Source: Simran Arora (https://cloudacademy.com/blog/docker-vs-virtual-machines-differences-you-should-know/#:~:text=Docker%20containers%20are%20considered%20suitable,to%20run%20on%20different%20OS.)*|
 
 * Advantages:
   * The running environment is prepared once and run many times
