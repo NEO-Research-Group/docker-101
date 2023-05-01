@@ -8,7 +8,7 @@
 
 |![Contenedor frente a máquina virtual](./Docker-vs..png)|
 |:--:|
-|Contenedores (izquierda) frente a máquina virtual (derecha).<br/>*Fuente: Simran Arora (https://cloudacademy.com/blog/docker-vs-virtual-machines-differences-you-should-know/#:~:text=Docker%20containers%20are%20considered%20suitable,to%20run%20on%20different%20OS.)*|
+|Contenedores (derecha) frente a máquina virtual (izquierda).<br/>*Fuente: Simran Arora (https://cloudacademy.com/blog/docker-vs-virtual-machines-differences-you-should-know/#:~:text=Docker%20containers%20are%20considered%20suitable,to%20run%20on%20different%20OS.)*|
 
 
 * Ventajas:
