@@ -302,7 +302,7 @@ Si queremos crear más instancias del contenedor, podemos usar el comando:
 ```
 docker service scale apache=3
 ```
-Podemos ver los servicios desplegados y su ubicación (nodo) usando el comando `docker service ls` y `docker service ps`. También podemos entrar en cada uno de los nodos y ver los servicios corriendo con `docker container ls`.
+Podemos ver los servicios desplegados y su ubicación (nodo) usando el comando `docker service ls`. Podemos ver los detalles de un servicio concreto con `docker service ps {{servicio}}`. También podemos entrar en cada uno de los nodos y ver los servicios corriendo con `docker container ls`.
 
 A nivel de red, docker balanceará la carga de las conexiones a los distintos contenedores replicados. Podemos comprobar esto haciendo `docker logs -f` a los distintos contenedores y ejecutando el sguiente código en una consola:
 ```
@@ -314,7 +314,13 @@ Podemos eliminar un servicio desplegado mediante:
 docker service rm {{nombre}}
 ```
 
-Si tenemos un conjunto de contenedores relacionados y declarados en un fichero de `docker-compose.yml`, podemos desplegarlos todos al swarm usando el comando `docker stack`:
+Si tenemos un conjunto de contenedores relacionados y declarados en un fichero de `docker-stack.yml`, podemos desplegarlos todos al swarm usando la familia de contactos `docker stack`. Para hacer el despliegue, y teniendo preparada la aplicación debemos seguir los siguientes pasos:
+1. Preparamos el enjambre siguiendo las instrucciones de más arriba
+2. Desplegamos un servicio de registro para ubicar las imágenes para los contenedores de nuestra aplicación. Esto podemos hacerlo con el siguiente comando:
 ```
-docker stack deploy deploy -c docker-compose.yml aplciacion
+docker service create --name registry --publish published=5000,target=5000 registry:2
+```
+3. Construimos las imágenes para los contenedores de la aplicación:
+```
+docker stack deploy deploy -c docker-compose.yml aplicacion
 
