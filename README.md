@@ -314,59 +314,8 @@ Podemos eliminar un servicio desplegado mediante:
 docker service rm {{nombre}}
 ```
 
-Si tenemos un conjunto de contenedores relacionados y declarados en un fichero de `docker-stack.yml`, podemos desplegarlos todos al swarm usando la familia de contactos `docker stack`. Para hacer el despliegue, y teniendo preparada la aplicación debemos seguir los siguientes pasos:
-1. Preparamos el enjambre siguiendo las instrucciones de más arriba
-2. Desplegamos un servicio de registro para ubicar las imágenes para los contenedores de nuestra aplicación. Esto podemos hacerlo con el siguiente comando:
-```
-docker service create --name registry --publish published=5000,target=5000 registry:2
-```
-3. Construimos las imágenes para los contenedores de la aplicación:
-```
-docker stack deploy deploy -c docker-compose.yml aplicacion
-
-
-### Docker en modo enjambre (swarm)
-
-El modo enjambre (swarm) de docker permite gestionar un conjunto de máquinas (nodos) y los contenedores que se despliegan en ella. De esta forma, podemos usar más recursos que una simple máquina (virtual). Para iniciar el modo enjambre usarmos el comando
-```
-docker swarm init
-```
-
-Por defecto, nuestra máquina (nodo) se configurará como única máquina del enjambre y adoptará el rol de *manager*. El otro rol posible es el de *worker*. Es posible tener más de un nodo *manager* y más de un nodo *worker* en el enjambre. La diferencia entre uno y otro es que los nodos *manager* dicen a los *worker* lo que tienen que hacer. Los comandos para lanzar servicios se deben ejecutar desde un nodo con rol de *manager*.
-
-Al inicializar un enjambre docker nos muestra el comando que debemos ejecutar en otro nodo para añadirlo como *worker*. En cualquier momento podmoes ver qué comando ejecutar sobre otro nodo para incorporarlo al enjambre como *worker* o *manager* usando el comando:
-```
-docker swarm join-token (worker|manager)
-```
-La respuesta de docker será un comando `docker swam join` que podemos usar para unirnos al enjambre. Un ejemplo de comando podría ser el siguiente:
-```
- docker swarm join --token SWMTKN-1-4ppfmgesdvkhdsmok8s6skcplzgn3n8vvkbxjd6v68d057phuw-1kl8k0933i2eevonsu102p0ud 192.168.65.3:2377
-```
-
-Podemos ver los nodos del enjambre con `docker node ls`. Para desplegar un contenedor en el enjambre usaremos el comando `docker service create`. Por ejemplo, el siguiente comando lanza un servidor Apache en el enjambre:
-```
-docker service create --replicas 1 --name apache -p 8080:80 httpd:alpine
-```
-Si queremos crear más instancias del contenedor, podemos usar el comando:
-```
-docker service scale apache=3
-```
-Podemos ver los servicios desplegados y su ubicación (nodo) usando el comando `docker service ls`. Podemos ver los detalles de un servicio concreto con `docker service ps {{servicio}}`. También podemos entrar en cada uno de los nodos y ver los servicios corriendo con `docker container ls`.
-
-A nivel de red, docker balanceará la carga de las conexiones a los distintos contenedores replicados. Podemos comprobar esto haciendo `docker logs -f` a los distintos contenedores y ejecutando el sguiente código en una consola:
-```
-for i in `seq 1 1000`; do curl http://localhost:8080; sleep 1; done
-```
-
-Podemos eliminar un servicio desplegado mediante:
-```
-docker service rm {{nombre}}
-```
-
 Si tenemos un conjunto de contenedores relacionados y declarados en un fichero de `docker-stack.yml`, podemos desplegarlos todos al swarm usando la familia de contactos `docker stack`. Un ejemplo de fichero `docker-stack.yml` es el siguiente:
 ```
-# This file is a copy of the exaple provided in the 
-# documentation of the official Wordpress docker image (https://hub.docker.com/_/wordpress?tab=description)
 version: '3.1'
 
 services:
@@ -409,7 +358,7 @@ services:
     
 volumes:
   db:
-
+```
 Para hacer el despliegue, y teniendo preparada la aplicación debemos seguir los siguientes pasos:
 1. Preparamos el enjambre siguiendo las instrucciones de más arriba
 2. Desplegamos un servicio de registro para ubicar las imágenes para los contenedores de nuestra aplicación. Esto podemos hacerlo con el siguiente comando:
@@ -431,7 +380,7 @@ docker stack deploy deploy -c docker-compose.yml {{nombre stack}}
 
 Podemos consultar la lista de servicios del *stack* con `docker stack services`, y los stacks desplegados con `docker stack ls`. Cuando queramos eliminar el *stack* usaremos el comando:
 ```
-docker stack rm {{nomrbe stack}}
+docker stack rm {{nombre stack}}
 ```
 
 Es posible scalar cualquier de los servicios que compone el stack (pero solo funcionará correctamente si lo hacemos con un servicio que no tenga estado). También podemos consultar el log de un servicio con:
