@@ -276,3 +276,5 @@ Podemos seguir los siguientes pasos para ejecutar en contenedores docker una apl
 6. Preparar un fichero `docker-compose.yml` con las instrucciones para construir la infraestructura docker.
 7. Iterar sobre los pasos 5 a 6 para ajustar detalles hasta que funcione.
 
+### Docker en modo enjambre (swarm)
+
