@@ -293,4 +293,20 @@ La respuesta de docker será un comando `docker swam join` que podemos usar para
 ```
  docker swarm join --token SWMTKN-1-4ppfmgesdvkhdsmok8s6skcplzgn3n8vvkbxjd6v68d057phuw-1kl8k0933i2eevonsu102p0ud 192.168.65.3:2377
 ```
- 
+
+Podemos ver los nodos del enjambre con `docker node ls`. Para desplegar un contenedor en el enjambre usaremos el comando `docker service create`. Por ejemplo, el siguiente comando lanza un servidor Apache en el enjambre:
+```
+docker service create --replicas 1 --name apache -p 8080:80 httpd:alpine
+```
+Si queremos crear más instancias del contenedor, podemos usar el comando:
+```
+docker service scale apache=3
+```
+Podemos ver los servicios desplegados y su ubicación (nodo) usando el comando `docker service ls`. También podemos entrar en cada uno de los nodos y ver los servicios corriendo con `docker container ls`.
+
+A nivel de red, docker balanceará la carga de las conexiones a los distintos contenedores replicados. Podemos comprobar esto haciendo `docker logs -f` a los distintos contenedores y ejecutando el sguiente código en una consola:
+```
+for i in `seq 1 1000`; do curl http://localhost:8080; sleep 1; done
+```
+
+Si tenemos un conjunto de contenedores 
