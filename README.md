@@ -283,9 +283,9 @@ El modo enjambre (swarm) de docker permite gestionar un conjunto de máquinas (n
 docker swarm init
 ```
 
-Por defecto, nuestra máquina (nodo) se configurará como única máquina del enjambre y adoptará el rol de *manager*. El otro rol posible es el de *worker*. Es posible tener más de un nodo *manager* y más de un nodo *worker* en el enjambre. La diferencia entre uno y otro es que los nodos *manager* dicen a los *worker* lo que tienen que hacer.
+Por defecto, nuestra máquina (nodo) se configurará como única máquina del enjambre y adoptará el rol de *manager*. El otro rol posible es el de *worker*. Es posible tener más de un nodo *manager* y más de un nodo *worker* en el enjambre. La diferencia entre uno y otro es que los nodos *manager* dicen a los *worker* lo que tienen que hacer. Los comandos para lanzar servicios se deben ejecutar desde un nodo con rol de *manager*.
 
-Al inicializar un enjambre docekr nos muestra el comando que debemos ejecutar en otro nodo para añadirlo como *worker*. En cualquier momento podmoes ver qué comando ejecutar sobre otro nodo para incorporarlo al enjambre como *worker* o *manager* usando el comando:
+Al inicializar un enjambre docker nos muestra el comando que debemos ejecutar en otro nodo para añadirlo como *worker*. En cualquier momento podmoes ver qué comando ejecutar sobre otro nodo para incorporarlo al enjambre como *worker* o *manager* usando el comando:
 ```
 docker swarm join-token (worker|manager)
 ```
@@ -302,11 +302,19 @@ Si queremos crear más instancias del contenedor, podemos usar el comando:
 ```
 docker service scale apache=3
 ```
-Podemos ver los servicios desplegados y su ubicación (nodo) usando el comando `docker service ls`. También podemos entrar en cada uno de los nodos y ver los servicios corriendo con `docker container ls`.
+Podemos ver los servicios desplegados y su ubicación (nodo) usando el comando `docker service ls` y `docker service ps`. También podemos entrar en cada uno de los nodos y ver los servicios corriendo con `docker container ls`.
 
 A nivel de red, docker balanceará la carga de las conexiones a los distintos contenedores replicados. Podemos comprobar esto haciendo `docker logs -f` a los distintos contenedores y ejecutando el sguiente código en una consola:
 ```
 for i in `seq 1 1000`; do curl http://localhost:8080; sleep 1; done
 ```
 
-Si tenemos un conjunto de contenedores 
+Podemos eliminar un servicio desplegado mediante:
+```
+docker service rm {{nombre}}
+```
+
+Si tenemos un conjunto de contenedores relacionados y declarados en un fichero de `docker-compose.yml`, podemos desplegarlos todos al swarm usando el comando `docker stack`:
+```
+docker stack deploy deploy -c docker-compose.yml aplciacion
+
