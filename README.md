@@ -278,3 +278,19 @@ Podemos seguir los siguientes pasos para ejecutar en contenedores docker una apl
 
 ### Docker en modo enjambre (swarm)
 
+El modo enjambre (swarm) de docker permite gestionar un conjunto de máquinas (nodos) y los contenedores que se despliegan en ella. De esta forma, podemos usar más recursos que una simple máquina (virtual). Para iniciar el modo enjambre usarmos el comando
+```
+docker swarm init
+```
+
+Por defecto, nuestra máquina (nodo) se configurará como única máquina del enjambre y adoptará el rol de *manager*. El otro rol posible es el de *worker*. Es posible tener más de un nodo *manager* y más de un nodo *worker* en el enjambre. La diferencia entre uno y otro es que los nodos *manager* dicen a los *worker* lo que tienen que hacer.
+
+Al inicializar un enjambre docekr nos muestra el comando que debemos ejecutar en otro nodo para añadirlo como *worker*. En cualquier momento podmoes ver qué comando ejecutar sobre otro nodo para incorporarlo al enjambre como *worker* o *manager* usando el comando:
+```
+docker swarm join-token (worker|manager)
+```
+La respuesta de docker será un comando `docker swam join` que podemos usar para unirnos al enjambre. Un ejemplo de comando podría ser el siguiente:
+```
+ docker swarm join --token SWMTKN-1-4ppfmgesdvkhdsmok8s6skcplzgn3n8vvkbxjd6v68d057phuw-1kl8k0933i2eevonsu102p0ud 192.168.65.3:2377
+```
+ 
