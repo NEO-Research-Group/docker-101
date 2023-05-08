@@ -211,7 +211,7 @@ Es habitual que tengamos que usar varios servicios para ejecutar una aplicación
 
 El primer paso para construir nuestra infraestructura docker con `docker-compose` es escribir un fichero `docker-compose.yml`:
 ```
-version: '2'
+version: '3.9'
 services:
   web:
     build: ./web
