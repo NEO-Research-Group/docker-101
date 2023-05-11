@@ -375,7 +375,7 @@ docker compose -f docker-stack.yml push
 ```
 5. Ahora es posible desplegar el *stack* de contenedores usando el comando:
 ```
-docker stack deploy deploy -c docker-compose.yml {{nombre stack}}
+docker stack deploy -c docker-stack.yml {{nombre stack}}
 ```
 
 Podemos consultar la lista de servicios del *stack* con `docker stack services`, y los stacks desplegados con `docker stack ls`. Cuando queramos eliminar el *stack* usaremos el comando:
