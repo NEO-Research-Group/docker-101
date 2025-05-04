@@ -50,7 +50,7 @@ Sin la opción `-a`, el comando `ls` solo muestra los contenedores en ejecución
 docker run -d --name myweb httpd:alpine
 docker container ls
 ```
-Se pueden asignar nombres a los contenedores usando la opticón `--name` cuando se crean (en caso contrario, el motor de docker les asignará un nombre aleatorio). Podemos ejecutar los contenedores en segundo plano usando la opción `-d` (en otro caso, el shell esperará hasta que el contenedor se detenga, lo cual hace cuando termine el proceso principal del contenedor).
+Se pueden asignar nombres a los contenedores usando la opción `--name` cuando se crean (en caso contrario, el motor de docker les asignará un nombre aleatorio). Podemos ejecutar los contenedores en segundo plano usando la opción `-d` (en otro caso, el shell esperará hasta que el contenedor se detenga, lo cual hace cuando termine el proceso principal del contenedor).
 
 Para detener un contenedor podemos usar:
 ```
@@ -79,7 +79,7 @@ Podemos ejecutar varios contenedores basados en la misma imagen:
 for i in `seq 1 3`; do docker run -d httpd:alpine; done
 ```
 
-Cuando detenemos los contenedores ocupan espacio en disco porque mantienen *estado* (un sistema de ficheros completo). Si no estamos interesados en este estado (cambios en el sistema de ficheros del contenedor) podemos eliminar los contenedores cuando temrinen. Podemos hacer esto ejecutádolos con la opción `--rm`:
+Cuando detenemos los contenedores ocupan espacio en disco porque mantienen *estado* (un sistema de ficheros completo). Si no estamos interesados en este estado (cambios en el sistema de ficheros del contenedor) podemos eliminar los contenedores cuando terminen. Podemos hacer esto ejecutádolos con la opción `--rm`:
 ```
 docker run --rm -it alpine
 ```
@@ -153,7 +153,7 @@ Podemos usar *bind mounts* para hacer una copia de seguridad de un volumen:
 docker run --rm -v $(pwd):/backup -v myapp:/data alpine sh -c "tar czf /backup/archive.tgz -C /data ."
 ```
 
-Podemos listar todos los volúmenes gestiondos por docker con:
+Podemos listar todos los volúmenes gestionados por docker con:
 ```
 docker volume ls
 ```
@@ -184,7 +184,7 @@ Todas las imágenes con las que trabajamos se descargan de [DockerHub](https://h
 docker pull jfrchicanog/graybox
 ```
 
-Podemos construir nuestras propias imágenes de Docker. El primer paso consiste en crear un `Dockerfile` que contiene la imagen base, un conjunto de instrucciones pra preparar el sistema de ficheros con los ficheros apropiados y metadatos. He aquí un ejemplo:
+Podemos construir nuestras propias imágenes de Docker. El primer paso consiste en crear un `Dockerfile` que contiene la imagen base, un conjunto de instrucciones para preparar el sistema de ficheros con los ficheros apropiados y metadatos. He aquí un ejemplo:
 ```
 FROM httpd:alpine
 COPY index.html /usr/local/apache2/htdocs
