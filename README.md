@@ -27,7 +27,7 @@
 
 * *Imagen*: Una imagen es una *plantilla de contenedor*. Puede haber muchos contenedores en ejecución basados en la misma imagen. La relación entre un contenedor y una imagen es la misma que entre un proceso y un programa (o un objeto y una clase).
 
-* *Volumen*: Unidad de almacenamiento, ruta en el sistema de ficheros de lamáquina anfitriona o sistema de ficheros temporal que podemos montar en cualquier punto del sistema de ficheros del contenedor.
+* *Volumen*: Unidad de almacenamiento, ruta en el sistema de ficheros de la máquina anfitriona o sistema de ficheros temporal que podemos montar en cualquier punto del sistema de ficheros del contenedor.
 
 ## Comandos básicos
 
