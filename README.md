@@ -268,7 +268,7 @@ Es posible ver los logs de todos los contenedores con `docker-compose logs`.
 ### ¿Cómo *dockerizar* una aplicación/servicio?
 
 Podemos seguir los siguientes pasos para ejecutar en contenedores docker una aplicación/servicio que se ejecuta en nuestro sistema:
-1. Identificar los servicios que neceistamos: base de datos, servidor de aplicaciones, servidor web, etc.
+1. Identificar los servicios que necesitamos: base de datos, servidor de aplicaciones, servidor web, etc.
 2. Encontrar o preparar una imagen docker para cada servicio.
 3. Identificar los ficheros que necesitamos almacenar.
 4. Preparar un volumen de docker que contenga cada conjunto lógico de ficheros. En el caso de ficheros que requieren una forma especial de importación (como bases de datos), es mejor crear un volumen vacío y ejecutar el procedimiento de importación contenedor apropiado.
@@ -285,7 +285,7 @@ docker swarm init
 
 Por defecto, nuestra máquina (nodo) se configurará como única máquina del enjambre y adoptará el rol de *manager*. El otro rol posible es el de *worker*. Es posible tener más de un nodo *manager* y más de un nodo *worker* en el enjambre. La diferencia entre uno y otro es que los nodos *manager* dicen a los *worker* lo que tienen que hacer. Los comandos para lanzar servicios se deben ejecutar desde un nodo con rol de *manager*.
 
-Al inicializar un enjambre docker nos muestra el comando que debemos ejecutar en otro nodo para añadirlo como *worker*. En cualquier momento podmoes ver qué comando ejecutar sobre otro nodo para incorporarlo al enjambre como *worker* o *manager* usando el comando:
+Al inicializar un enjambre docker nos muestra el comando que debemos ejecutar en otro nodo para añadirlo como *worker*. En cualquier momento podemos ver qué comando ejecutar sobre otro nodo para incorporarlo al enjambre como *worker* o *manager* usando el comando:
 ```
 docker swarm join-token (worker|manager)
 ```
