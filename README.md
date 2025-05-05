@@ -238,13 +238,19 @@ volumes:
 Un ejemplo más complejo, con 6 contenedores se presenta [aquí](https://github.com/jfrchicanog/docker-ewp/blob/baedb47a4841e1a51e65f286dabafb7852cdc0de/ewp/docker-compose.yml).
 
 Vamos a crear una infraestructura docker para un sitio de Wordpress. Usemos [este fichero docker-compose](https://raw.githubusercontent.com/NEO-Research-Group/docker-101/master/docker-compose.yml). Podemos crear todos los contenedores, redes y volúmenes y ejecutar los contenedores con:
-```
+```bash
 docker-compose up -d
 ```
+
+En versiones modernas de docker, el comando se ha integrado como subcomando dentro del comando `docker` y hay que escribir:
+```bash
+docker compose up -d
+```
+
 La opción `-d` permite ejecutar el comando en segundo plano. Podemos ver que los contenedores están corriendo con el comando `docker container ls`, y los nuevos volúmenes con `docker volume ls`. Deberíamos ser capaces de conectarnos a nuestra instalación de wordpress usando el navegador: http://localhost:8080. Vamos a añadir un primer usuario.
 
 Podemos comprobar que la base de datos ha almacenado la información de ese primer usuario haciendo:
-```
+```bash
 docker exec -it root-db-1 /bin/bash
 mysql -u exampleuser -pexamplepass exampledb
 select * from wp_users;
@@ -252,7 +258,7 @@ select * from wp_users;
 
 El comando `docker exec` ejecuta un proceso dentro de un contenedor activo.
 
-Podemos detener los contenedores con `docker-compose stop` y arrancarlos de nuevo con `docker-compose start`. Ambos deben ejecutarse en el mismo directorio donde se encuentra el fichero `docker-compose.yml`. Para detener y/o eliminar todos los contenedores y redes virtuales podemos hacer:
+Podemos detener los contenedores con `docker-compose stop` y arrancarlos de nuevo con `docker-compose start`. Ambos deben ejecutarse en el mismo directorio donde se encuentra el fichero `docker-compose.yml`. Para detener y/o eliminar todos los contenedores y redes virtuales podemos hacer (o su equivalente sin guión):
 ```
 docker-compose down
 ```
