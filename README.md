@@ -210,8 +210,7 @@ Es habitual que tengamos que usar varios servicios para ejecutar una aplicación
 `docker-compose` es una herramienta que nos permite combinar varios contenedores docker conectados mediante una red virtual. De esta forma podemos usar las imágenes existentes de los componentes individuales de nuestro sistema y combinarlos para contruir la infraestructura que necesitamos.
 
 El primer paso para construir nuestra infraestructura docker con `docker-compose` es escribir un fichero `docker-compose.yml`:
-```
-version: '3.9'
+```docker-compose
 services:
   web:
     build: ./web
