@@ -245,7 +245,7 @@ La opción `-d` permite ejecutar el comando en segundo plano. Podemos ver que lo
 
 Podemos comprobar que la base de datos ha almacenado la información de ese primer usuario haciendo:
 ```
-docker exec -it root_db_1 /bin/bash
+docker exec -it root-db-1 /bin/bash
 mysql -u exampleuser -pexamplepass exampledb
 select * from wp_users;
 ```
