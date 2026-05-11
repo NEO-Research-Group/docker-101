@@ -31,7 +31,7 @@
 
 ## Comandos básicos
 
-Puede usar docker instalado en tu máquina para seguir el tutorial o ir al sitio [play with docker](https://labs.play-with-docker.com) si no quiere instalar nada.
+Debe tener docker instalado en tu máquina para seguir el tutorial.
 
 ### Gestión de contenedores
 
